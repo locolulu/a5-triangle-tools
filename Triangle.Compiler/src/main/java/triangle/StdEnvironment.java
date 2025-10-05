@@ -40,8 +40,20 @@ public final class StdEnvironment {
 
 	public static UnaryOperatorDeclaration notDecl;
 
-	public static BinaryOperatorDeclaration andDecl, orDecl, addDecl, subtractDecl, multiplyDecl, divideDecl,
-			moduloDecl, equalDecl, unequalDecl, lessDecl, notlessDecl, greaterDecl, notgreaterDecl;
+	public static BinaryOperatorDeclaration andDecl;
+    public static BinaryOperatorDeclaration orDecl;
+    public static BinaryOperatorDeclaration addDecl;
+    public static BinaryOperatorDeclaration subtractDecl;
+    public static BinaryOperatorDeclaration multiplyDecl;
+    public static BinaryOperatorDeclaration divideDecl;
+    public static BinaryOperatorDeclaration moduloDecl;
+    public static BinaryOperatorDeclaration equalDecl;
+    public static BinaryOperatorDeclaration unequalDecl;
+    public static BinaryOperatorDeclaration lessDecl;
+    public static BinaryOperatorDeclaration notlessDecl;
+    public static BinaryOperatorDeclaration greaterDecl;
+    public static BinaryOperatorDeclaration notgreaterDecl;
+    public static UnaryOperatorDeclaration barDecl;
 
 	public static ProcDeclaration getDecl, putDecl, getintDecl, putintDecl, geteolDecl, puteolDecl;
 
