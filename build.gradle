@@ -7,6 +7,9 @@ java {
 subprojects.each { subproject ->
   evaluationDependsOn(subproject.path)
 }
+repositories {
+    mavenCentral()
+}
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE

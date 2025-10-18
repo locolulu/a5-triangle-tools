@@ -206,9 +206,9 @@ public final class Checker implements ActualParameterVisitor<FormalParameter, Vo
 	}
 
 	@Override
-	public TypeDenoter visitBinaryExpression(BinaryExpression ast, Void arg) {
-		var e1Type = ast.E1.visit(this);
-		var e2Type = ast.E2.visit(this);
+        public TypeDenoter visitBinaryExpression(BinaryExpression ast, Void arg) {
+            var e1Type = ast.E1.visit(this);
+            var e2Type = ast.E2.visit(this);
 		var binding = ast.O.visit(this);
 
 		if (binding instanceof BinaryOperatorDeclaration bbinding) {
