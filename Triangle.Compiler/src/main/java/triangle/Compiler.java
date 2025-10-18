@@ -27,6 +27,8 @@ import triangle.syntacticAnalyzer.Parser;
 import triangle.syntacticAnalyzer.Scanner;
 import triangle.syntacticAnalyzer.SourceFile;
 import triangle.treeDrawer.Drawer;
+import com.sampullara.cli.Args;
+import com.sampullara.cli.Argument;
 
 /**
  * The main driver class for the Triangle compiler.
@@ -34,10 +36,14 @@ import triangle.treeDrawer.Drawer;
 public class Compiler {
 
 	/** The filename for the object program, normally obj.tam. */
-	static String objectName = "obj.tam";
-	
-	static boolean showTree = false;
-	static boolean folding = false;
+
+    //Task 2b - command line arguments for instance variables using the cli-parser library
+    @Argument(alias = "o", description = "Object name", required = false)
+    protected String objectName = "obj.tam";
+    @Argument(alias = "s", description = "show the tree", required = false)
+    protected boolean showTree = false;
+    @Argument(alias = "f", description = "folding", required = false)
+    protected boolean folding = false;
 
 	private static Scanner scanner;
 	private static Parser parser;
@@ -63,7 +69,7 @@ public class Compiler {
 	 * @return true iff the source program is free of compile-time errors, otherwise
 	 *         false.
 	 */
-	static boolean compileProgram(String sourceName, String objectName, boolean showingAST, boolean showingTable) {
+	 boolean compileProgram(String sourceName, String objectName, boolean showingAST, boolean showingTable) {
 
 		System.out.println("********** " + "Triangle Compiler (Java Version 2.1)" + " **********");
 
@@ -122,32 +128,24 @@ public class Compiler {
 	 */
 	public static void main(String[] args) {
 
+        //Task 2b - new compiler instance
+        Compiler compiler = new Compiler();
+
 		if (args.length < 1) {
 			System.out.println("Usage: tc filename [-o=outputfilename] [tree] [folding]");
 			System.exit(1);
 		}
-		
-		parseArgs(args);
+
+        //Task 2b - parse args using new cli-parser method
+        Args.parseOrExit(compiler, args);
 
 		String sourceName = args[0];
 		
-		var compiledOK = compileProgram(sourceName, objectName, showTree, false);
+		var compiledOK = compiler.compileProgram(sourceName, compiler.objectName, compiler.showTree, false);
 
-		if (!showTree) {
+		if (!compiler.showTree) {
 			System.exit(compiledOK ? 0 : 1);
 		}
 	}
-	
-	private static void parseArgs(String[] args) {
-		for (String s : args) {
-			var sl = s.toLowerCase();
-			if (sl.equals("tree")) {
-				showTree = true;
-			} else if (sl.startsWith("-o=")) {
-				objectName = s.substring(3);
-			} else if (sl.equals("folding")) {
-				folding = true;
-			}
-		}
-	}
+
 }
