@@ -45,6 +45,10 @@ public class Compiler {
     @Argument(alias = "f", description = "folding", required = false)
     protected boolean folding = false;
 
+    //Task 2c - added variable with command line argument for new showTreeAfter option
+    @Argument(alias = "sa", description = "show tree after folding", required = false)
+    protected boolean showTreeAfter = false;
+
 	private static Scanner scanner;
 	private static Parser parser;
 	private static Checker checker;
@@ -69,7 +73,9 @@ public class Compiler {
 	 * @return true iff the source program is free of compile-time errors, otherwise
 	 *         false.
 	 */
-	 boolean compileProgram(String sourceName, String objectName, boolean showingAST, boolean showingTable) {
+
+    //Task 2c - added a new parameter for the new showTreeAfter option
+	 boolean compileProgram(String sourceName, String objectName, boolean showingAST, boolean showingTable, boolean showingASTagain) {
 
 		System.out.println("********** " + "Triangle Compiler (Java Version 2.1)" + " **********");
 
@@ -103,6 +109,10 @@ public class Compiler {
 			if (folding) {
 				theAST.visit(new ConstantFolder());
 			}
+            //Task 2c - a new if clause to show the tree after folding
+            if (showingASTagain) {
+                drawer.draw(theAST);
+            }
 			
 			if (reporter.getNumErrors() == 0) {
 				System.out.println("Code Generation ...");
@@ -140,8 +150,9 @@ public class Compiler {
         Args.parseOrExit(compiler, args);
 
 		String sourceName = args[0];
-		
-		var compiledOK = compiler.compileProgram(sourceName, compiler.objectName, compiler.showTree, false);
+
+        //task 2c - added a new argument for the new showTreeAfter option
+		var compiledOK = compiler.compileProgram(sourceName, compiler.objectName, compiler.showTree, false, compiler.showTreeAfter);
 
 		if (!compiler.showTree) {
 			System.exit(compiledOK ? 0 : 1);
