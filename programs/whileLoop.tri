@@ -1,0 +1,17 @@
+let
+  var a : Integer
+in
+begin
+  a := 1;
+  whiledo
+  begin
+    put('a');
+    a := a + 1;
+  end
+  while a < 5
+  do
+  begin
+    put('a');
+    a := a + 1;
+  end
+end

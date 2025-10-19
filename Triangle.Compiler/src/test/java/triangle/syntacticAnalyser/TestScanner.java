@@ -81,18 +81,21 @@ public class TestScanner {
 
 	
 	@Test
-	public void add() {
+	public void testAdd() {
 		compileExpectSuccess("/add.tri");
 	}
 
 
     @Test
-    public void increment() {compileExpectSuccess("/increment.tri"); }
+    public void testIncrement() {compileExpectSuccess("/increment.tri"); }
 
 
     //Task 3b - test program using ** properly compiles
     @Test
-    public void timesTwo() {compileExpectSuccess("/double.tri"); }
+    public void testDouble() {compileExpectSuccess("/double.tri"); }
+
+    @Test
+    public void testWhileLoop() {compileExpectSuccess("/whileLoop.tri"); }
 
 
 	private void compileExpectSuccess(String filename) {

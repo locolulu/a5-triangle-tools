@@ -364,6 +364,18 @@ public class Parser {
         }
             break;
 
+            case WHILEDO: {
+                acceptIt();
+                Command c1AST = parseSingleCommand();
+                accept(Token.Kind.WHILE);
+                Expression eAST = parseExpression();
+                accept(Token.Kind.DO);
+                Command c2AST = parseSingleCommand();
+                finish(commandPos);
+                commandAST = new WhileDoCommand(c1AST, eAST, c2AST, commandPos);
+            }
+            break;
+
 		case SEMICOLON:
 		case END:
 		case ELSE:
