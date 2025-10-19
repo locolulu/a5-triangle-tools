@@ -78,14 +78,23 @@ public class TestScanner {
 	public void testRepeatUntil() {
 		compileExpectSuccess("/repeatuntil.tri");
 	}
+
 	
 	@Test
 	public void add() {
 		compileExpectSuccess("/add.tri");
 	}
-	
-	
-	
+
+
+    @Test
+    public void increment() {compileExpectSuccess("/increment.tri"); }
+
+
+    //Task 3b - test program using ** properly compiles
+    @Test
+    public void timesTwo() {compileExpectSuccess("/double.tri"); }
+
+
 	private void compileExpectSuccess(String filename) {
 		// build.gradle has a line sourceSets.test.resources.srcDir file("$rootDir/programs")
 		// which adds the programs directory to the list of places Java can easily find files
@@ -121,5 +130,7 @@ public class TestScanner {
 		// currently this program will fail
 		assertNotEquals("Problem compiling " + filename, 0, reporter.getNumErrors());
 	}
+
+
 
 }

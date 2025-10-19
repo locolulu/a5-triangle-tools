@@ -283,11 +283,35 @@ public class Parser {
 
 			} else {
 
-				Vname vAST = parseRestOfVname(iAST);
-				accept(Token.Kind.BECOMES);
-				Expression eAST = parseExpression();
-				finish(commandPos);
-				commandAST = new AssignCommand(vAST, eAST, commandPos);
+                Vname vAST = parseRestOfVname(iAST);
+
+                if (currentToken.kind == Token.Kind.OPERATOR && currentToken.spelling.equals("++") ){
+                    acceptIt();
+                    IntegerLiteral oneIntLiteral =  new IntegerLiteral("1", commandPos);
+                    Expression one = new IntegerExpression(oneIntLiteral, commandPos);
+                    Operator plus = new Operator("+", commandPos);
+                    Expression variableExpression = new VnameExpression(vAST, commandPos);
+                    Expression increment = new BinaryExpression(variableExpression, plus, one, commandPos);
+
+                    commandAST = new AssignCommand(vAST, increment, commandPos);
+                //Task 3a - add support for ** command
+                }else if (currentToken.kind == Token.Kind.OPERATOR && currentToken.spelling.equals("**") ){
+                    acceptIt();
+                    IntegerLiteral twoIntLiteral =  new IntegerLiteral("2", commandPos);
+                    Expression two = new IntegerExpression(twoIntLiteral, commandPos);
+                    Operator multiply = new Operator("*", commandPos);
+                    Expression variableExpression = new VnameExpression(vAST, commandPos);
+                    Expression timesTwo = new BinaryExpression(variableExpression, multiply, two, commandPos);
+
+                    commandAST = new AssignCommand(vAST, timesTwo, commandPos);
+
+                }else {
+                    accept(Token.Kind.BECOMES);
+                    Expression eAST = parseExpression();
+                    finish(commandPos);
+                    commandAST = new AssignCommand(vAST, eAST, commandPos);
+                }
+
 			}
 		}
 			break;
