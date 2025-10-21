@@ -364,7 +364,7 @@ public class Parser {
         }
             break;
 
-            case WHILEDO: {
+            case DOWHILEDO: {
                 acceptIt();
                 Command c1AST = parseSingleCommand();
                 accept(Token.Kind.WHILE);
@@ -372,7 +372,7 @@ public class Parser {
                 accept(Token.Kind.DO);
                 Command c2AST = parseSingleCommand();
                 finish(commandPos);
-                commandAST = new WhileDoCommand(c1AST, eAST, c2AST, commandPos);
+                commandAST = new DoWhileDoCommand(c1AST, eAST, c2AST, commandPos);
             }
             break;
 

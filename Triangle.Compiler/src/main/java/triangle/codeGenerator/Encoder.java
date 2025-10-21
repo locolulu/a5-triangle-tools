@@ -176,7 +176,7 @@ public final class Encoder implements ActualParameterVisitor<Frame, Integer>,
     }
 
     @Override
-    public Void visitWhileDoCommand(WhileDoCommand ast, Frame frame) {
+    public Void visitDoWhileDoCommand(DoWhileDoCommand ast, Frame frame) {
         var loopAddr = emitter.getNextInstrAddr();
         ast.C1.visit(this, frame);
         ast.E.visit(this, frame);

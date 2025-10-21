@@ -193,7 +193,7 @@ public final class Checker implements ActualParameterVisitor<FormalParameter, Vo
     }
 
     @Override
-    public Void visitWhileDoCommand(WhileDoCommand ast, Void unused) {
+    public Void visitDoWhileDoCommand(DoWhileDoCommand ast, Void unused) {
 
         ast.C1.visit(this);
         var eType = ast.E.visit(this);

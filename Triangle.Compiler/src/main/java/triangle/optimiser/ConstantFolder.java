@@ -82,9 +82,9 @@ public class ConstantFolder implements ActualParameterVisitor<Void, AbstractSynt
 		OperatorVisitor<Void, AbstractSyntaxTree>, ProgramVisitor<Void, AbstractSyntaxTree>,
 		RecordAggregateVisitor<Void, AbstractSyntaxTree>, TypeDenoterVisitor<Void, AbstractSyntaxTree>,
 		VnameVisitor<Void, AbstractSyntaxTree> {
-	{
 
-	}
+
+
 
 	@Override
 	public AbstractSyntaxTree visitConstFormalParameter(ConstFormalParameter ast, Void arg) {
@@ -502,7 +502,7 @@ public class ConstantFolder implements ActualParameterVisitor<Void, AbstractSynt
 	}
 
     @Override
-    public AbstractSyntaxTree visitWhileDoCommand(WhileDoCommand ast, Void arg) {
+    public AbstractSyntaxTree visitDoWhileDoCommand(DoWhileDoCommand ast, Void arg) {
         ast.C1.visit(this);
         AbstractSyntaxTree replacement = ast.E.visit(this);
         if (replacement != null) {
@@ -549,7 +549,9 @@ public class ConstantFolder implements ActualParameterVisitor<Void, AbstractSynt
 		return null;
 	}
 
-	@Override
+
+
+    @Override
 	public AbstractSyntaxTree visitConstActualParameter(ConstActualParameter ast, Void arg) {
 		AbstractSyntaxTree replacement = ast.E.visit(this);
 		if (replacement != null) {

@@ -4,9 +4,9 @@ import triangle.abstractSyntaxTrees.expressions.Expression;
 import triangle.abstractSyntaxTrees.visitors.CommandVisitor;
 import triangle.syntacticAnalyzer.SourcePosition;
 
-public class WhileDoCommand extends Command {
+public class DoWhileDoCommand extends Command {
 
-    public WhileDoCommand(Command c1AST, Expression eAST, Command c2AST, SourcePosition position) {
+    public DoWhileDoCommand(Command c1AST, Expression eAST, Command c2AST, SourcePosition position) {
         super(position);
         C1 = c1AST;
         E = eAST;
@@ -14,7 +14,7 @@ public class WhileDoCommand extends Command {
     }
 
     public <TArg, TResult> TResult visit(CommandVisitor<TArg, TResult> v, TArg arg) {
-        return v.visitWhileDoCommand(this, arg);
+        return v.visitDoWhileDoCommand(this, arg);
     }
 
     public Expression E;

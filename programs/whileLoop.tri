@@ -3,7 +3,7 @@ let
 in
 begin
   a := 1;
-  whiledo
+  dowhiledo
   begin
     put('a');
     a := a + 1;
