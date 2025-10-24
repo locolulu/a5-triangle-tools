@@ -10,5 +10,10 @@ dependencies {
 }
 
 application {
-	mainClass = 'Triangle.AbstractMachine.Interpreter'
+	mainClass = 'triangle.abstractMachine.Interpreter'
+}
+
+tasks.named('run') {
+    standardInput = System.in
+    workingDir = rootProject.projectDir
 }

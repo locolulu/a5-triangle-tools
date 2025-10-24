@@ -180,9 +180,10 @@ public final class Encoder implements ActualParameterVisitor<Frame, Integer>,
         var loopAddr = emitter.getNextInstrAddr();
         ast.C1.visit(this, frame);
         ast.E.visit(this, frame);
-        var jumpAddr = emitter.emit(OpCode.JUMPIF, 0, Register.CB, 0);
+        var jumpAddr = emitter.emit(OpCode.JUMPIF, Machine.falseRep, Register.CB, 0);
         ast.C2.visit(this, frame);
         emitter.emit(OpCode.JUMP, Register.CB, loopAddr);
+        emitter.patch(jumpAddr);
         return null;
     }
 
