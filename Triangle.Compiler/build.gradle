@@ -21,7 +21,7 @@ dependencies {
 }
 
 application {
-	mainClass = 'Triangle.Compiler'
+	mainClass = 'triangle.Compiler'
 }
 
 // allow access to programs for unit tests
@@ -33,3 +33,8 @@ test {
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
+
+tasks.named('run') {
+    workingDir = rootProject.projectDir
+}
+

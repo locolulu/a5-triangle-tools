@@ -54,7 +54,7 @@ final class Token {
 		INTLITERAL("<int>"), CHARLITERAL("<char>"), IDENTIFIER("<identifier>"), OPERATOR("<operator>"),
 
 		// reserved words - keep in alphabetical order for ease of maintenance...
-		ARRAY("array"), BEGIN("begin"), CONST("const"), DO("do"), DOWHILEDO("dowhiledo"), ELSE("else"), END("end"), FUNC("func"), IF("if"), IN("in"), LET("let"), OF("of"),
+		ARRAY("array"), BEGIN("begin"), CONST("const"), DO("do"), LOOP("loop"), ELSE("else"), END("end"), FUNC("func"), IF("if"), IN("in"), LET("let"), OF("of"),
 		PROC("proc"), RECORD("record"), REPEAT("repeat"), THEN("then"), TYPE("type"), UNTIL("until"), VAR("var"), WHILE("while"),
 
 		// punctuation...
